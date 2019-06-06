@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  localdns:
+    image: kyokuheki/localdns
+    ports:
+      - "53:53"
+      - "53:53/udp"
+    cap_add:
+      - NET_ADMIN
+      - NET_BIND_SERVICE
+    restart: always
+    logging:
+      driver: "json-file" # defaults if not specified
+      options:
+        max-size: "100m"
+        max-file: "3"
